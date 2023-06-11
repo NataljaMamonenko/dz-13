@@ -7,22 +7,22 @@ public class DBReader {
 
     public static void main(String[] args) {
         try {
-            // Подключение к базе данных
+            // Підключення до бази даних People
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            // Выполнение INSERT запроса
+            // INSERT
             insert(conn, "John", 25);
 
-            // Выполнение SELECT запроса
+            // SELECT
             select(conn);
 
-            // Выполнение UPDATE запроса
+            // UPDATE
             update(conn, 1, "Jane", 30);
 
-            // Выполнение DELETE запроса
+            // DELETE
             delete(conn, 1);
 
-            // Закрытие подключения к базе данных
+            // Закриття підключення до БД
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class DBReader {
         pstmt.setString(1, name);
         pstmt.setInt(2, age);
         pstmt.executeUpdate();
-        System.out.println("Данные были успешно добавлены.");
+        System.out.println("Дані успішно додані.");
     }
 
     private static void select(Connection conn) throws SQLException {
@@ -61,7 +61,7 @@ public class DBReader {
         pstmt.setInt(2, age);
         pstmt.setInt(3, id);
         pstmt.executeUpdate();
-        System.out.println("Данные были успешно обновлены.");
+        System.out.println("Дані успішно оновлені.");
     }
 
     private static void delete(Connection conn, int id) throws SQLException {
@@ -69,6 +69,6 @@ public class DBReader {
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setInt(1, id);
         pstmt.executeUpdate();
-        System.out.println("Данные были успешно удалены.");
+        System.out.println("Дані успішно видалені.");
     }
 }
